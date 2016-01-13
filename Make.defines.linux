@@ -1,0 +1,23 @@
+# Common make definitions, customized for each platform
+
+# Definitions required in all program directories to compile and link
+# C programs using gcc.
+
+CC=gcc
+COMPILE.c=$(CC) $(CFLAGS) $(CPPFLAGS) -c
+LINK.c=$(CC) $(CFLAGS) $(CPPFLAGS)
+LDFLAGS=
+STDLIBS= -lstdc++ -lm $(LDFLAGS)
+CFLAGS=-ansi -I$(ROOT)/include -Wall -DLINUX -D_GNU_SOURCE $(EXTRA) -g
+CPPFLAGS= -std=c++11
+RANLIB=echo
+AR=ar
+AWK=awk
+
+# Definitions required in all program directories to compile Java 
+# programs using javac.
+JFLAGS = -g
+JC = javac
+
+# Common temp files to delete from each directory.
+TEMPFILES=core core.* *.o temp.* *.out
