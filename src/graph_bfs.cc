@@ -28,10 +28,8 @@ typedef vector<S> G;
 typedef vector<int> P; // properties
 typedef queue<int> Q; // properties
 
-void print_graph(const G& g)
-{
-    for (G::const_iterator it = g.cbegin(); it != g.cend(); ++it)
-    {
+void print_graph(const G& g) {
+    for (G::const_iterator it = g.cbegin(); it != g.cend(); ++it) {
         S::const_iterator it2 = (*it).cbegin();
 
         for (; it2 != (*it).cend(); ++it2)
@@ -41,8 +39,11 @@ void print_graph(const G& g)
     }
 }
 
-void BFS(const G& g, int s)
-{
+// ===  FUNCTION  ======================================================================
+//         Name:  BFS
+//  Description:
+// =====================================================================================
+void BFS(const G& g, int s) {
     enum {WHITE, GRAY, BLACK};
     enum {NIL = -1};
     P color(g.size(), WHITE);
@@ -55,8 +56,7 @@ void BFS(const G& g, int s)
     Q queue;
     queue.push(s);
 
-    while (!queue.empty())
-    {
+    while (!queue.empty()) {
         int u = queue.front(); // all vertex in Q are gray, they are found but not searched yet
         queue.pop();
 
@@ -64,10 +64,8 @@ void BFS(const G& g, int s)
         //  use c++ 11 syntax instead
         //  for(S::const_iterator it = G[u].cbegin(); it != G[u].cend(); ++it)
         //-----------------------------------------------------------------------------
-        for (int v : g[u])
-        {
-            if (color[v] == WHITE)
-            {
+        for (int v : g[u]) {
+            if (color[v] == WHITE) {
                 color[v] = GRAY;
                 d[v] = d[u] + 1;
                 pi[v] = u;
@@ -82,13 +80,21 @@ void BFS(const G& g, int s)
     cout << endl;
 }
 
+
+// ===  FUNCTION  ======================================================================
+//         Name:  print_path
+//  Description:  predecessor subgraph - breadth-first tree
+// =====================================================================================
+void print_path() {
+    return ;
+}
+
 // ===  FUNCTION  ======================================================================
 //         Name:  main
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     G graph;
     graph.push_back({1, 4});
     graph.push_back({0, 4, 2, 3});
