@@ -27,18 +27,16 @@ enum { NIL = -1 };
 //-----------------------------------------------------------------------------
 inline int parent_(int i) {
     assert(i > 0);
-
-    if (i <= 0)
-        return NIL;
-
     return i / 2;
 }
 
 inline int left_(int i) {
+    assert(i > 0);
     return 2 * i;
 }
 
 inline int right_(int i) {
+    assert(i > 0);
     return 2 * i + 1;
 }
 
